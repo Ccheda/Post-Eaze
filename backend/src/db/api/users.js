@@ -150,15 +150,15 @@ module.exports = class UsersDBApi {
 
     const output = users.get({ plain: true });
 
+    output.posts_user = await users.getPosts_user({
+      transaction,
+    });
+
     output.subscriptions_user = await users.getSubscriptions_user({
       transaction,
     });
 
     output.topics_user = await users.getTopics_user({
-      transaction,
-    });
-
-    output.posts_user = await users.getPosts_user({
       transaction,
     });
 

@@ -9,12 +9,28 @@ const menuAside: MenuAsideItem[] = [
   },
 
   {
-    href: '/users/users-list',
-    label: 'Users',
+    href: '/posts/posts-list',
+    label: 'Posts',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    icon: icon.mdiAccountGroup ? icon.mdiAccountGroup : icon.mdiTable,
-    permissions: 'READ_USERS',
+    icon: icon.mdiPost ? icon.mdiPost : icon.mdiTable,
+    permissions: 'READ_POSTS',
+  },
+  {
+    href: '/subscriptions/subscriptions-list',
+    label: 'Subscriptions',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiCreditCard ? icon.mdiCreditCard : icon.mdiTable,
+    permissions: 'READ_SUBSCRIPTIONS',
+  },
+  {
+    href: '/topics/topics-list',
+    label: 'Topics',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiLightbulbOutline ? icon.mdiLightbulbOutline : icon.mdiTable,
+    permissions: 'READ_TOPICS',
   },
   {
     href: '/roles/roles-list',
@@ -37,28 +53,12 @@ const menuAside: MenuAsideItem[] = [
     permissions: 'READ_PERMISSIONS',
   },
   {
-    href: '/subscriptions/subscriptions-list',
-    label: 'Subscriptions',
+    href: '/users/users-list',
+    label: 'Users',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    icon: icon.mdiCreditCard ? icon.mdiCreditCard : icon.mdiTable,
-    permissions: 'READ_SUBSCRIPTIONS',
-  },
-  {
-    href: '/topics/topics-list',
-    label: 'Topics',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    icon: icon.mdiLightbulbOutline ? icon.mdiLightbulbOutline : icon.mdiTable,
-    permissions: 'READ_TOPICS',
-  },
-  {
-    href: '/posts/posts-list',
-    label: 'Posts',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    icon: icon.mdiPost ? icon.mdiPost : icon.mdiTable,
-    permissions: 'READ_POSTS',
+    icon: icon.mdiAccountGroup ? icon.mdiAccountGroup : icon.mdiTable,
+    permissions: 'READ_USERS',
   },
   {
     href: '/profile',

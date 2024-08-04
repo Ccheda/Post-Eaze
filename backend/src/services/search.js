@@ -41,13 +41,13 @@ module.exports = class SearchService {
         throw new ValidationError('iam.errors.searchQueryRequired');
       }
       const tableColumns = {
-        users: ['name'],
+        posts: ['content'],
 
         subscriptions: ['plan'],
 
         topics: ['title'],
 
-        posts: ['content'],
+        users: ['name'],
       };
       const columnsInt = {};
 

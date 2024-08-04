@@ -1,11 +1,37 @@
 const db = require('../models');
 const Users = db.users;
 
+const Posts = db.posts;
+
 const Subscriptions = db.subscriptions;
 
 const Topics = db.topics;
 
-const Posts = db.posts;
+const PostsData = [
+  {
+    content: 'Excited to share my latest project on LinkedIn!',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    content: 'Looking for feedback on my recent post.',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    content: 'Here are some tips for effective networking.',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    content: 'Just completed my trial period and loving this tool!',
+
+    // type code here for "relation_one" field
+  },
+];
 
 const SubscriptionsData = [
   {
@@ -83,75 +109,49 @@ const TopicsData = [
   },
 ];
 
-const PostsData = [
-  {
-    content: 'Excited to share my latest project on LinkedIn!',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    content: 'Looking for feedback on my recent post.',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    content: 'Here are some tips for effective networking.',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    content: 'Just completed my trial period and loving this tool!',
-
-    // type code here for "relation_one" field
-  },
-];
-
-async function associateUserWithUser() {
+async function associatePostWithUser() {
   const relatedUser0 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const User0 = await Users.findOne({
+  const Post0 = await Posts.findOne({
     order: [['id', 'ASC']],
     offset: 0,
   });
-  if (User0?.setUser) {
-    await User0.setUser(relatedUser0);
+  if (Post0?.setUser) {
+    await Post0.setUser(relatedUser0);
   }
 
   const relatedUser1 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const User1 = await Users.findOne({
+  const Post1 = await Posts.findOne({
     order: [['id', 'ASC']],
     offset: 1,
   });
-  if (User1?.setUser) {
-    await User1.setUser(relatedUser1);
+  if (Post1?.setUser) {
+    await Post1.setUser(relatedUser1);
   }
 
   const relatedUser2 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const User2 = await Users.findOne({
+  const Post2 = await Posts.findOne({
     order: [['id', 'ASC']],
     offset: 2,
   });
-  if (User2?.setUser) {
-    await User2.setUser(relatedUser2);
+  if (Post2?.setUser) {
+    await Post2.setUser(relatedUser2);
   }
 
   const relatedUser3 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const User3 = await Users.findOne({
+  const Post3 = await Posts.findOne({
     order: [['id', 'ASC']],
     offset: 3,
   });
-  if (User3?.setUser) {
-    await User3.setUser(relatedUser3);
+  if (Post3?.setUser) {
+    await Post3.setUser(relatedUser3);
   }
 }
 
@@ -249,62 +249,62 @@ async function associateTopicWithUser() {
   }
 }
 
-async function associatePostWithUser() {
+async function associateUserWithUser() {
   const relatedUser0 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const Post0 = await Posts.findOne({
+  const User0 = await Users.findOne({
     order: [['id', 'ASC']],
     offset: 0,
   });
-  if (Post0?.setUser) {
-    await Post0.setUser(relatedUser0);
+  if (User0?.setUser) {
+    await User0.setUser(relatedUser0);
   }
 
   const relatedUser1 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const Post1 = await Posts.findOne({
+  const User1 = await Users.findOne({
     order: [['id', 'ASC']],
     offset: 1,
   });
-  if (Post1?.setUser) {
-    await Post1.setUser(relatedUser1);
+  if (User1?.setUser) {
+    await User1.setUser(relatedUser1);
   }
 
   const relatedUser2 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const Post2 = await Posts.findOne({
+  const User2 = await Users.findOne({
     order: [['id', 'ASC']],
     offset: 2,
   });
-  if (Post2?.setUser) {
-    await Post2.setUser(relatedUser2);
+  if (User2?.setUser) {
+    await User2.setUser(relatedUser2);
   }
 
   const relatedUser3 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const Post3 = await Posts.findOne({
+  const User3 = await Users.findOne({
     order: [['id', 'ASC']],
     offset: 3,
   });
-  if (Post3?.setUser) {
-    await Post3.setUser(relatedUser3);
+  if (User3?.setUser) {
+    await User3.setUser(relatedUser3);
   }
 }
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    await Posts.bulkCreate(PostsData);
+
     await Subscriptions.bulkCreate(SubscriptionsData);
 
     await Topics.bulkCreate(TopicsData);
 
-    await Posts.bulkCreate(PostsData);
-
     await Promise.all([
-      await associateUserWithUser(),
+      await associatePostWithUser(),
 
       await associateSubscriptionWithUser(),
 
@@ -312,15 +312,15 @@ module.exports = {
 
       await associateTopicWithUser(),
 
-      await associatePostWithUser(),
+      await associateUserWithUser(),
     ]);
   },
 
   down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('posts', null, {});
+
     await queryInterface.bulkDelete('subscriptions', null, {});
 
     await queryInterface.bulkDelete('topics', null, {});
-
-    await queryInterface.bulkDelete('posts', null, {});
   },
 };
