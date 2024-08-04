@@ -39,23 +39,23 @@ export default {
     });
   },
 
-  postsManyListFormatter(val) {
+  usersManyListFormatter(val) {
     if (!val || !val.length) return [];
-    return val.map((item) => item.content);
+    return val.map((item) => item.name);
   },
-  postsOneListFormatter(val) {
+  usersOneListFormatter(val) {
     if (!val) return '';
-    return val.content;
+    return val.name;
   },
-  postsManyListFormatterEdit(val) {
+  usersManyListFormatterEdit(val) {
     if (!val || !val.length) return [];
     return val.map((item) => {
-      return { id: item.id, label: item.content };
+      return { id: item.id, label: item.name };
     });
   },
-  postsOneListFormatterEdit(val) {
+  usersOneListFormatterEdit(val) {
     if (!val) return '';
-    return { label: val.content, id: val.id };
+    return { label: val.name, id: val.id };
   },
 
   permissionsManyListFormatter(val) {
@@ -77,22 +77,22 @@ export default {
     return { label: val.name, id: val.id };
   },
 
-  usersManyListFormatter(val) {
+  postsManyListFormatter(val) {
     if (!val || !val.length) return [];
-    return val.map((item) => item.name);
+    return val.map((item) => item.content);
   },
-  usersOneListFormatter(val) {
+  postsOneListFormatter(val) {
     if (!val) return '';
-    return val.name;
+    return val.content;
   },
-  usersManyListFormatterEdit(val) {
+  postsManyListFormatterEdit(val) {
     if (!val || !val.length) return [];
     return val.map((item) => {
-      return { id: item.id, label: item.name };
+      return { id: item.id, label: item.content };
     });
   },
-  usersOneListFormatterEdit(val) {
+  postsOneListFormatterEdit(val) {
     if (!val) return '';
-    return { label: val.name, id: val.id };
+    return { label: val.content, id: val.id };
   },
 };

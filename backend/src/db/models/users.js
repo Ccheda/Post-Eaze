@@ -34,8 +34,8 @@ module.exports = function (sequelize, DataTypes) {
   users.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
-    db.users.hasMany(db.posts, {
-      as: 'posts_user',
+    db.users.hasMany(db.subscriptions, {
+      as: 'subscriptions_user',
       foreignKey: {
         name: 'userId',
       },
@@ -50,8 +50,8 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
-    db.users.hasMany(db.subscriptions, {
-      as: 'subscriptions_user',
+    db.users.hasMany(db.posts, {
+      as: 'posts_user',
       foreignKey: {
         name: 'userId',
       },

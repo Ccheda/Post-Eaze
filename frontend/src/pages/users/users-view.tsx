@@ -67,72 +67,6 @@ const UsersView = () => {
           </div>
 
           <>
-            <p className={'block font-bold mb-2'}>Posts user</p>
-            <CardBox
-              className='mb-6 border border-gray-300 rounded overflow-hidden'
-              hasTable
-            >
-              <div className='overflow-x-auto'>
-                <table>
-                  <thead>
-                    <tr></tr>
-                  </thead>
-                  <tbody>
-                    {users.posts_user &&
-                      Array.isArray(users.posts_user) &&
-                      users.posts_user.map((item: any) => (
-                        <tr
-                          key={item.id}
-                          onClick={() =>
-                            router.push(`/posts/posts-view/?id=${item.id}`)
-                          }
-                        ></tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
-              {!users?.posts_user?.length && (
-                <div className={'text-center py-4'}>No data</div>
-              )}
-            </CardBox>
-          </>
-
-          <>
-            <p className={'block font-bold mb-2'}>Topics user</p>
-            <CardBox
-              className='mb-6 border border-gray-300 rounded overflow-hidden'
-              hasTable
-            >
-              <div className='overflow-x-auto'>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {users.topics_user &&
-                      Array.isArray(users.topics_user) &&
-                      users.topics_user.map((item: any) => (
-                        <tr
-                          key={item.id}
-                          onClick={() =>
-                            router.push(`/topics/topics-view/?id=${item.id}`)
-                          }
-                        >
-                          <td data-label='title'>{item.title}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
-              {!users?.topics_user?.length && (
-                <div className={'text-center py-4'}>No data</div>
-              )}
-            </CardBox>
-          </>
-
-          <>
             <p className={'block font-bold mb-2'}>Subscriptions user</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
@@ -176,6 +110,72 @@ const UsersView = () => {
                 </table>
               </div>
               {!users?.subscriptions_user?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Topics user</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.topics_user &&
+                      Array.isArray(users.topics_user) &&
+                      users.topics_user.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/topics/topics-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='title'>{item.title}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.topics_user?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Posts user</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr></tr>
+                  </thead>
+                  <tbody>
+                    {users.posts_user &&
+                      Array.isArray(users.posts_user) &&
+                      users.posts_user.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/posts/posts-view/?id=${item.id}`)
+                          }
+                        ></tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.posts_user?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

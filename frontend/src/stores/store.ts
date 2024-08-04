@@ -4,12 +4,12 @@ import mainReducer from './mainSlice';
 import authSlice from './authSlice';
 import openAiSlice from './openAiSlice';
 
-import postsSlice from './posts/postsSlice';
-import topicsSlice from './topics/topicsSlice';
-import subscriptionsSlice from './subscriptions/subscriptionsSlice';
+import usersSlice from './users/usersSlice';
 import rolesSlice from './roles/rolesSlice';
 import permissionsSlice from './permissions/permissionsSlice';
-import usersSlice from './users/usersSlice';
+import subscriptionsSlice from './subscriptions/subscriptionsSlice';
+import topicsSlice from './topics/topicsSlice';
+import postsSlice from './posts/postsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,12 +18,12 @@ export const store = configureStore({
     auth: authSlice,
     openAi: openAiSlice,
 
-    posts: postsSlice,
-    topics: topicsSlice,
-    subscriptions: subscriptionsSlice,
+    users: usersSlice,
     roles: rolesSlice,
     permissions: permissionsSlice,
-    users: usersSlice,
+    subscriptions: subscriptionsSlice,
+    topics: topicsSlice,
+    posts: postsSlice,
   },
 });
 

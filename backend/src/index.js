@@ -19,17 +19,17 @@ const organizationForAuthRoutes = require('./routes/organizationLogin');
 
 const openaiRoutes = require('./routes/openai');
 
-const postsRoutes = require('./routes/posts');
-
-const topicsRoutes = require('./routes/topics');
-
-const subscriptionsRoutes = require('./routes/subscriptions');
+const usersRoutes = require('./routes/users');
 
 const rolesRoutes = require('./routes/roles');
 
 const permissionsRoutes = require('./routes/permissions');
 
-const usersRoutes = require('./routes/users');
+const subscriptionsRoutes = require('./routes/subscriptions');
+
+const topicsRoutes = require('./routes/topics');
+
+const postsRoutes = require('./routes/posts');
 
 const options = {
   definition: {
@@ -90,21 +90,9 @@ app.use('/api/file', fileRoutes);
 app.enable('trust proxy');
 
 app.use(
-  '/api/posts',
+  '/api/users',
   passport.authenticate('jwt', { session: false }),
-  postsRoutes,
-);
-
-app.use(
-  '/api/topics',
-  passport.authenticate('jwt', { session: false }),
-  topicsRoutes,
-);
-
-app.use(
-  '/api/subscriptions',
-  passport.authenticate('jwt', { session: false }),
-  subscriptionsRoutes,
+  usersRoutes,
 );
 
 app.use(
@@ -120,9 +108,21 @@ app.use(
 );
 
 app.use(
-  '/api/users',
+  '/api/subscriptions',
   passport.authenticate('jwt', { session: false }),
-  usersRoutes,
+  subscriptionsRoutes,
+);
+
+app.use(
+  '/api/topics',
+  passport.authenticate('jwt', { session: false }),
+  topicsRoutes,
+);
+
+app.use(
+  '/api/posts',
+  passport.authenticate('jwt', { session: false }),
+  postsRoutes,
 );
 
 app.use(

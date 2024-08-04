@@ -22,12 +22,12 @@ const Dashboard = () => {
   const corners = useAppSelector((state) => state.style.corners);
   const cardsStyle = useAppSelector((state) => state.style.cardsStyle);
 
-  const [posts, setPosts] = React.useState('Loading...');
-  const [topics, setTopics] = React.useState('Loading...');
-  const [subscriptions, setSubscriptions] = React.useState('Loading...');
+  const [users, setUsers] = React.useState('Loading...');
   const [roles, setRoles] = React.useState('Loading...');
   const [permissions, setPermissions] = React.useState('Loading...');
-  const [users, setUsers] = React.useState('Loading...');
+  const [subscriptions, setSubscriptions] = React.useState('Loading...');
+  const [topics, setTopics] = React.useState('Loading...');
+  const [posts, setPosts] = React.useState('Loading...');
 
   const [widgetsRole, setWidgetsRole] = React.useState({
     role: { value: '', label: '' },
@@ -41,20 +41,20 @@ const Dashboard = () => {
 
   async function loadData() {
     const entities = [
-      'posts',
-      'topics',
-      'subscriptions',
+      'users',
       'roles',
       'permissions',
-      'users',
+      'subscriptions',
+      'topics',
+      'posts',
     ];
     const fns = [
-      setPosts,
-      setTopics,
-      setSubscriptions,
+      setUsers,
       setRoles,
       setPermissions,
-      setUsers,
+      setSubscriptions,
+      setTopics,
+      setPosts,
     ];
 
     const requests = entities.map((entity, index) => {
@@ -162,8 +162,8 @@ const Dashboard = () => {
         {!!rolesWidgets.length && <hr className='my-6  ' />}
 
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6'>
-          {hasPermission(currentUser, 'READ_POSTS') && (
-            <Link href={'/posts/posts-list'}>
+          {hasPermission(currentUser, 'READ_USERS') && (
+            <Link href={'/users/users-list'}>
               <div
                 className={`${
                   corners !== 'rounded-full' ? corners : 'rounded-3xl'
@@ -172,10 +172,10 @@ const Dashboard = () => {
                 <div className='flex justify-between align-center'>
                   <div>
                     <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
-                      Posts
+                      Users
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
-                      {posts}
+                      {users}
                     </div>
                   </div>
                   <div>
@@ -186,71 +186,7 @@ const Dashboard = () => {
                       size={48}
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
-                      path={icon.mdiPost || icon.mdiTable}
-                    />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          )}
-
-          {hasPermission(currentUser, 'READ_TOPICS') && (
-            <Link href={'/topics/topics-list'}>
-              <div
-                className={`${
-                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
-                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
-              >
-                <div className='flex justify-between align-center'>
-                  <div>
-                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
-                      Topics
-                    </div>
-                    <div className='text-3xl leading-tight font-semibold'>
-                      {topics}
-                    </div>
-                  </div>
-                  <div>
-                    <BaseIcon
-                      className={`${iconsColor}`}
-                      w='w-16'
-                      h='h-16'
-                      size={48}
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      path={icon.mdiLightbulbOutline || icon.mdiTable}
-                    />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          )}
-
-          {hasPermission(currentUser, 'READ_SUBSCRIPTIONS') && (
-            <Link href={'/subscriptions/subscriptions-list'}>
-              <div
-                className={`${
-                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
-                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
-              >
-                <div className='flex justify-between align-center'>
-                  <div>
-                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
-                      Subscriptions
-                    </div>
-                    <div className='text-3xl leading-tight font-semibold'>
-                      {subscriptions}
-                    </div>
-                  </div>
-                  <div>
-                    <BaseIcon
-                      className={`${iconsColor}`}
-                      w='w-16'
-                      h='h-16'
-                      size={48}
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      path={icon.mdiCreditCard || icon.mdiTable}
+                      path={icon.mdiAccountGroup || icon.mdiTable}
                     />
                   </div>
                 </div>
@@ -324,8 +260,8 @@ const Dashboard = () => {
             </Link>
           )}
 
-          {hasPermission(currentUser, 'READ_USERS') && (
-            <Link href={'/users/users-list'}>
+          {hasPermission(currentUser, 'READ_SUBSCRIPTIONS') && (
+            <Link href={'/subscriptions/subscriptions-list'}>
               <div
                 className={`${
                   corners !== 'rounded-full' ? corners : 'rounded-3xl'
@@ -334,10 +270,10 @@ const Dashboard = () => {
                 <div className='flex justify-between align-center'>
                   <div>
                     <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
-                      Users
+                      Subscriptions
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
-                      {users}
+                      {subscriptions}
                     </div>
                   </div>
                   <div>
@@ -348,7 +284,71 @@ const Dashboard = () => {
                       size={48}
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
-                      path={icon.mdiAccountGroup || icon.mdiTable}
+                      path={icon.mdiCreditCard || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_TOPICS') && (
+            <Link href={'/topics/topics-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Topics
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {topics}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiLightbulbOutline || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_POSTS') && (
+            <Link href={'/posts/posts-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Posts
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {posts}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiPost || icon.mdiTable}
                     />
                   </div>
                 </div>
