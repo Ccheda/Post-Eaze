@@ -43,9 +43,9 @@ module.exports = class SearchService {
       const tableColumns = {
         posts: ['content'],
 
-        subscriptions: ['plan'],
-
         topics: ['title'],
+
+        subscriptions: ['plan'],
 
         users: ['name'],
       };

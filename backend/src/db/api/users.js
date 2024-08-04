@@ -154,11 +154,11 @@ module.exports = class UsersDBApi {
       transaction,
     });
 
-    output.subscriptions_user = await users.getSubscriptions_user({
+    output.topics_user = await users.getTopics_user({
       transaction,
     });
 
-    output.topics_user = await users.getTopics_user({
+    output.subscriptions_user = await users.getSubscriptions_user({
       transaction,
     });
 

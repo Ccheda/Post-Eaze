@@ -3,9 +3,9 @@ const Users = db.users;
 
 const Posts = db.posts;
 
-const Subscriptions = db.subscriptions;
-
 const Topics = db.topics;
+
+const Subscriptions = db.subscriptions;
 
 const PostsData = [
   {
@@ -22,6 +22,46 @@ const PostsData = [
 
   {
     content: 'Here are some tips for effective networking.',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    content: 'Just completed my trial period and loving this tool!',
+
+    // type code here for "relation_one" field
+  },
+];
+
+const TopicsData = [
+  {
+    title: 'Career Development',
+
+    // type code here for "relation_many" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    title: 'Networking Tips',
+
+    // type code here for "relation_many" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    title: 'Project Updates',
+
+    // type code here for "relation_many" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    title: 'Feedback Requests',
+
+    // type code here for "relation_many" field
 
     // type code here for "relation_one" field
   },
@@ -57,29 +97,13 @@ const SubscriptionsData = [
 
     // type code here for "relation_one" field
   },
-];
-
-const TopicsData = [
-  {
-    title: 'Career Development',
-
-    // type code here for "relation_many" field
-
-    // type code here for "relation_one" field
-  },
 
   {
-    title: 'Networking Tips',
+    plan: 'Monthly',
 
-    // type code here for "relation_many" field
+    start_date: new Date('2023-10-01T00:00:00Z'),
 
-    // type code here for "relation_one" field
-  },
-
-  {
-    title: 'Project Updates',
-
-    // type code here for "relation_many" field
+    end_date: new Date('2023-11-01T00:00:00Z'),
 
     // type code here for "relation_one" field
   },
@@ -118,40 +142,16 @@ async function associatePostWithUser() {
   if (Post2?.setUser) {
     await Post2.setUser(relatedUser2);
   }
-}
 
-async function associateSubscriptionWithUser() {
-  const relatedUser0 = await Users.findOne({
+  const relatedUser3 = await Users.findOne({
     offset: Math.floor(Math.random() * (await Users.count())),
   });
-  const Subscription0 = await Subscriptions.findOne({
+  const Post3 = await Posts.findOne({
     order: [['id', 'ASC']],
-    offset: 0,
+    offset: 3,
   });
-  if (Subscription0?.setUser) {
-    await Subscription0.setUser(relatedUser0);
-  }
-
-  const relatedUser1 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Subscription1 = await Subscriptions.findOne({
-    order: [['id', 'ASC']],
-    offset: 1,
-  });
-  if (Subscription1?.setUser) {
-    await Subscription1.setUser(relatedUser1);
-  }
-
-  const relatedUser2 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Subscription2 = await Subscriptions.findOne({
-    order: [['id', 'ASC']],
-    offset: 2,
-  });
-  if (Subscription2?.setUser) {
-    await Subscription2.setUser(relatedUser2);
+  if (Post3?.setUser) {
+    await Post3.setUser(relatedUser3);
   }
 }
 
@@ -190,6 +190,63 @@ async function associateTopicWithUser() {
   if (Topic2?.setUser) {
     await Topic2.setUser(relatedUser2);
   }
+
+  const relatedUser3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Topic3 = await Topics.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Topic3?.setUser) {
+    await Topic3.setUser(relatedUser3);
+  }
+}
+
+async function associateSubscriptionWithUser() {
+  const relatedUser0 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Subscription0 = await Subscriptions.findOne({
+    order: [['id', 'ASC']],
+    offset: 0,
+  });
+  if (Subscription0?.setUser) {
+    await Subscription0.setUser(relatedUser0);
+  }
+
+  const relatedUser1 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Subscription1 = await Subscriptions.findOne({
+    order: [['id', 'ASC']],
+    offset: 1,
+  });
+  if (Subscription1?.setUser) {
+    await Subscription1.setUser(relatedUser1);
+  }
+
+  const relatedUser2 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Subscription2 = await Subscriptions.findOne({
+    order: [['id', 'ASC']],
+    offset: 2,
+  });
+  if (Subscription2?.setUser) {
+    await Subscription2.setUser(relatedUser2);
+  }
+
+  const relatedUser3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Subscription3 = await Subscriptions.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Subscription3?.setUser) {
+    await Subscription3.setUser(relatedUser3);
+  }
 }
 
 async function associateUserWithUser() {
@@ -225,24 +282,35 @@ async function associateUserWithUser() {
   if (User2?.setUser) {
     await User2.setUser(relatedUser2);
   }
+
+  const relatedUser3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const User3 = await Users.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (User3?.setUser) {
+    await User3.setUser(relatedUser3);
+  }
 }
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await Posts.bulkCreate(PostsData);
 
-    await Subscriptions.bulkCreate(SubscriptionsData);
-
     await Topics.bulkCreate(TopicsData);
+
+    await Subscriptions.bulkCreate(SubscriptionsData);
 
     await Promise.all([
       await associatePostWithUser(),
 
-      await associateSubscriptionWithUser(),
-
       // Similar logic for "relation_many"
 
       await associateTopicWithUser(),
+
+      await associateSubscriptionWithUser(),
 
       await associateUserWithUser(),
     ]);
@@ -251,8 +319,8 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('posts', null, {});
 
-    await queryInterface.bulkDelete('subscriptions', null, {});
-
     await queryInterface.bulkDelete('topics', null, {});
+
+    await queryInterface.bulkDelete('subscriptions', null, {});
   },
 };

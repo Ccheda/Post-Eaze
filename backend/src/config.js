@@ -53,12 +53,6 @@ const config = {
     admin: 'Administrator',
     user: 'User',
   },
-
-  project_uuid: 'a9e93e7d-7079-401e-b9b2-e1d9bfd66d5e',
-  flHost:
-    process.env.NODE_ENV === 'production'
-      ? 'https://flatlogic.com/projects'
-      : 'http://localhost:3000/projects',
 };
 
 config.host =

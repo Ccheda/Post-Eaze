@@ -45,7 +45,7 @@ module.exports = {
       );
 
       await queryInterface.createTable(
-        'subscriptions',
+        'topics',
         {
           id: {
             type: Sequelize.DataTypes.UUID,
@@ -79,7 +79,7 @@ module.exports = {
       );
 
       await queryInterface.createTable(
-        'topics',
+        'subscriptions',
         {
           id: {
             type: Sequelize.DataTypes.UUID,
@@ -224,6 +224,43 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
+        'posts',
+        'userId',
+        {
+          type: Sequelize.DataTypes.UUID,
+
+          references: {
+            model: 'users',
+            key: 'id',
+          },
+        },
+        { transaction },
+      );
+
+      await queryInterface.addColumn(
+        'topics',
+        'title',
+        {
+          type: Sequelize.DataTypes.TEXT,
+        },
+        { transaction },
+      );
+
+      await queryInterface.addColumn(
+        'topics',
+        'userId',
+        {
+          type: Sequelize.DataTypes.UUID,
+
+          references: {
+            model: 'users',
+            key: 'id',
+          },
+        },
+        { transaction },
+      );
+
+      await queryInterface.addColumn(
         'subscriptions',
         'plan',
         {
@@ -251,19 +288,15 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
-        'topics',
-        'title',
+        'subscriptions',
+        'userId',
         {
-          type: Sequelize.DataTypes.TEXT,
-        },
-        { transaction },
-      );
+          type: Sequelize.DataTypes.UUID,
 
-      await queryInterface.addColumn(
-        'permissions',
-        'name',
-        {
-          type: Sequelize.DataTypes.TEXT,
+          references: {
+            model: 'users',
+            key: 'id',
+          },
         },
         { transaction },
       );
@@ -287,15 +320,6 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
-        'users',
-        'name',
-        {
-          type: Sequelize.DataTypes.TEXT,
-        },
-        { transaction },
-      );
-
-      await queryInterface.addColumn(
         'roles',
         'globalAccess',
         {
@@ -308,49 +332,25 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
+        'permissions',
+        'name',
+        {
+          type: Sequelize.DataTypes.TEXT,
+        },
+        { transaction },
+      );
+
+      await queryInterface.addColumn(
         'users',
-        'userId',
+        'name',
         {
-          type: Sequelize.DataTypes.UUID,
-
-          references: {
-            model: 'users',
-            key: 'id',
-          },
+          type: Sequelize.DataTypes.TEXT,
         },
         { transaction },
       );
 
       await queryInterface.addColumn(
-        'posts',
-        'userId',
-        {
-          type: Sequelize.DataTypes.UUID,
-
-          references: {
-            model: 'users',
-            key: 'id',
-          },
-        },
-        { transaction },
-      );
-
-      await queryInterface.addColumn(
-        'subscriptions',
-        'userId',
-        {
-          type: Sequelize.DataTypes.UUID,
-
-          references: {
-            model: 'users',
-            key: 'id',
-          },
-        },
-        { transaction },
-      );
-
-      await queryInterface.addColumn(
-        'topics',
+        'users',
         'userId',
         {
           type: Sequelize.DataTypes.UUID,
@@ -380,21 +380,15 @@ module.exports = {
      */
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.removeColumn('topics', 'userId', { transaction });
-
-      await queryInterface.removeColumn('subscriptions', 'userId', {
-        transaction,
-      });
-
-      await queryInterface.removeColumn('posts', 'userId', { transaction });
-
       await queryInterface.removeColumn('users', 'userId', { transaction });
+
+      await queryInterface.removeColumn('users', 'name', { transaction });
+
+      await queryInterface.removeColumn('permissions', 'name', { transaction });
 
       await queryInterface.removeColumn('roles', 'globalAccess', {
         transaction,
       });
-
-      await queryInterface.removeColumn('users', 'name', { transaction });
 
       await queryInterface.removeColumn('roles', 'role_customization', {
         transaction,
@@ -402,9 +396,9 @@ module.exports = {
 
       await queryInterface.removeColumn('roles', 'name', { transaction });
 
-      await queryInterface.removeColumn('permissions', 'name', { transaction });
-
-      await queryInterface.removeColumn('topics', 'title', { transaction });
+      await queryInterface.removeColumn('subscriptions', 'userId', {
+        transaction,
+      });
 
       await queryInterface.removeColumn('subscriptions', 'end_date', {
         transaction,
@@ -418,6 +412,12 @@ module.exports = {
         transaction,
       });
 
+      await queryInterface.removeColumn('topics', 'userId', { transaction });
+
+      await queryInterface.removeColumn('topics', 'title', { transaction });
+
+      await queryInterface.removeColumn('posts', 'userId', { transaction });
+
       await queryInterface.removeColumn('posts', 'content', { transaction });
 
       await queryInterface.dropTable('users', { transaction });
@@ -426,9 +426,9 @@ module.exports = {
 
       await queryInterface.dropTable('roles', { transaction });
 
-      await queryInterface.dropTable('topics', { transaction });
-
       await queryInterface.dropTable('subscriptions', { transaction });
+
+      await queryInterface.dropTable('topics', { transaction });
 
       await queryInterface.dropTable('posts', { transaction });
 

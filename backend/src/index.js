@@ -21,9 +21,9 @@ const openaiRoutes = require('./routes/openai');
 
 const postsRoutes = require('./routes/posts');
 
-const subscriptionsRoutes = require('./routes/subscriptions');
-
 const topicsRoutes = require('./routes/topics');
+
+const subscriptionsRoutes = require('./routes/subscriptions');
 
 const rolesRoutes = require('./routes/roles');
 
@@ -96,15 +96,15 @@ app.use(
 );
 
 app.use(
-  '/api/subscriptions',
-  passport.authenticate('jwt', { session: false }),
-  subscriptionsRoutes,
-);
-
-app.use(
   '/api/topics',
   passport.authenticate('jwt', { session: false }),
   topicsRoutes,
+);
+
+app.use(
+  '/api/subscriptions',
+  passport.authenticate('jwt', { session: false }),
+  subscriptionsRoutes,
 );
 
 app.use(

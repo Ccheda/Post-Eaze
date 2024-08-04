@@ -23,8 +23,8 @@ const Dashboard = () => {
   const cardsStyle = useAppSelector((state) => state.style.cardsStyle);
 
   const [posts, setPosts] = React.useState('Loading...');
-  const [subscriptions, setSubscriptions] = React.useState('Loading...');
   const [topics, setTopics] = React.useState('Loading...');
+  const [subscriptions, setSubscriptions] = React.useState('Loading...');
   const [roles, setRoles] = React.useState('Loading...');
   const [permissions, setPermissions] = React.useState('Loading...');
   const [users, setUsers] = React.useState('Loading...');
@@ -42,16 +42,16 @@ const Dashboard = () => {
   async function loadData() {
     const entities = [
       'posts',
-      'subscriptions',
       'topics',
+      'subscriptions',
       'roles',
       'permissions',
       'users',
     ];
     const fns = [
       setPosts,
-      setSubscriptions,
       setTopics,
+      setSubscriptions,
       setRoles,
       setPermissions,
       setUsers,
@@ -194,38 +194,6 @@ const Dashboard = () => {
             </Link>
           )}
 
-          {hasPermission(currentUser, 'READ_SUBSCRIPTIONS') && (
-            <Link href={'/subscriptions/subscriptions-list'}>
-              <div
-                className={`${
-                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
-                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
-              >
-                <div className='flex justify-between align-center'>
-                  <div>
-                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
-                      Subscriptions
-                    </div>
-                    <div className='text-3xl leading-tight font-semibold'>
-                      {subscriptions}
-                    </div>
-                  </div>
-                  <div>
-                    <BaseIcon
-                      className={`${iconsColor}`}
-                      w='w-16'
-                      h='h-16'
-                      size={48}
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      path={icon.mdiCreditCard || icon.mdiTable}
-                    />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          )}
-
           {hasPermission(currentUser, 'READ_TOPICS') && (
             <Link href={'/topics/topics-list'}>
               <div
@@ -251,6 +219,38 @@ const Dashboard = () => {
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
                       path={icon.mdiLightbulbOutline || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_SUBSCRIPTIONS') && (
+            <Link href={'/subscriptions/subscriptions-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Subscriptions
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {subscriptions}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiCreditCard || icon.mdiTable}
                     />
                   </div>
                 </div>

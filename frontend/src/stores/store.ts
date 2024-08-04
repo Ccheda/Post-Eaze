@@ -5,8 +5,8 @@ import authSlice from './authSlice';
 import openAiSlice from './openAiSlice';
 
 import postsSlice from './posts/postsSlice';
-import subscriptionsSlice from './subscriptions/subscriptionsSlice';
 import topicsSlice from './topics/topicsSlice';
+import subscriptionsSlice from './subscriptions/subscriptionsSlice';
 import rolesSlice from './roles/rolesSlice';
 import permissionsSlice from './permissions/permissionsSlice';
 import usersSlice from './users/usersSlice';
@@ -19,8 +19,8 @@ export const store = configureStore({
     openAi: openAiSlice,
 
     posts: postsSlice,
-    subscriptions: subscriptionsSlice,
     topics: topicsSlice,
+    subscriptions: subscriptionsSlice,
     roles: rolesSlice,
     permissions: permissionsSlice,
     users: usersSlice,

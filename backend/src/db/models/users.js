@@ -42,16 +42,16 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
-    db.users.hasMany(db.subscriptions, {
-      as: 'subscriptions_user',
+    db.users.hasMany(db.topics, {
+      as: 'topics_user',
       foreignKey: {
         name: 'userId',
       },
       constraints: false,
     });
 
-    db.users.hasMany(db.topics, {
-      as: 'topics_user',
+    db.users.hasMany(db.subscriptions, {
+      as: 'subscriptions_user',
       foreignKey: {
         name: 'userId',
       },

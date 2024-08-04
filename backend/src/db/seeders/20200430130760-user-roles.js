@@ -95,8 +95,8 @@ module.exports = {
 
     const entities = [
       'posts',
-      'subscriptions',
       'topics',
+      'subscriptions',
       'roles',
       'permissions',
       'users',
@@ -256,6 +256,104 @@ primary key ("roles_permissionsId", "permissionId")
         createdAt,
         updatedAt,
         roles_permissionsId: getId('PlatformOwner'),
+        permissionId: getId('CREATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('PlatformOwner'),
+        permissionId: getId('READ_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('PlatformOwner'),
+        permissionId: getId('UPDATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('PlatformOwner'),
+        permissionId: getId('DELETE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('ContentManager'),
+        permissionId: getId('CREATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('ContentManager'),
+        permissionId: getId('READ_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('ContentManager'),
+        permissionId: getId('UPDATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('ContentManager'),
+        permissionId: getId('DELETE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Subscriber'),
+        permissionId: getId('READ_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Subscriber'),
+        permissionId: getId('UPDATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('TrialUser'),
+        permissionId: getId('READ_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('TrialUser'),
+        permissionId: getId('UPDATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SupportAgent'),
+        permissionId: getId('READ_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SupportAgent'),
+        permissionId: getId('UPDATE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('PlatformOwner'),
         permissionId: getId('CREATE_SUBSCRIPTIONS'),
       },
 
@@ -334,104 +432,6 @@ primary key ("roles_permissionsId", "permissionId")
         updatedAt,
         roles_permissionsId: getId('SupportAgent'),
         permissionId: getId('UPDATE_SUBSCRIPTIONS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('PlatformOwner'),
-        permissionId: getId('CREATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('PlatformOwner'),
-        permissionId: getId('READ_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('PlatformOwner'),
-        permissionId: getId('UPDATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('PlatformOwner'),
-        permissionId: getId('DELETE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('ContentManager'),
-        permissionId: getId('CREATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('ContentManager'),
-        permissionId: getId('READ_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('ContentManager'),
-        permissionId: getId('UPDATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('ContentManager'),
-        permissionId: getId('DELETE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Subscriber'),
-        permissionId: getId('READ_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Subscriber'),
-        permissionId: getId('UPDATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('TrialUser'),
-        permissionId: getId('READ_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('TrialUser'),
-        permissionId: getId('UPDATE_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SupportAgent'),
-        permissionId: getId('READ_TOPICS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SupportAgent'),
-        permissionId: getId('UPDATE_TOPICS'),
       },
 
       {
@@ -498,31 +498,6 @@ primary key ("roles_permissionsId", "permissionId")
         createdAt,
         updatedAt,
         roles_permissionsId: getId('Administrator'),
-        permissionId: getId('CREATE_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('READ_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('UPDATE_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('DELETE_SUBSCRIPTIONS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
         permissionId: getId('CREATE_TOPICS'),
       },
       {
@@ -542,6 +517,31 @@ primary key ("roles_permissionsId", "permissionId")
         updatedAt,
         roles_permissionsId: getId('Administrator'),
         permissionId: getId('DELETE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('CREATE_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('READ_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('UPDATE_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('DELETE_SUBSCRIPTIONS'),
       },
 
       {
@@ -573,31 +573,6 @@ primary key ("roles_permissionsId", "permissionId")
         createdAt,
         updatedAt,
         roles_permissionsId: getId('SuperAdmin'),
-        permissionId: getId('CREATE_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SuperAdmin'),
-        permissionId: getId('READ_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SuperAdmin'),
-        permissionId: getId('UPDATE_SUBSCRIPTIONS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SuperAdmin'),
-        permissionId: getId('DELETE_SUBSCRIPTIONS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('SuperAdmin'),
         permissionId: getId('CREATE_TOPICS'),
       },
       {
@@ -617,6 +592,31 @@ primary key ("roles_permissionsId", "permissionId")
         updatedAt,
         roles_permissionsId: getId('SuperAdmin'),
         permissionId: getId('DELETE_TOPICS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SuperAdmin'),
+        permissionId: getId('CREATE_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SuperAdmin'),
+        permissionId: getId('READ_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SuperAdmin'),
+        permissionId: getId('UPDATE_SUBSCRIPTIONS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('SuperAdmin'),
+        permissionId: getId('DELETE_SUBSCRIPTIONS'),
       },
 
       {

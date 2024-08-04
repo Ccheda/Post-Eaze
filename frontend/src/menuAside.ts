@@ -17,20 +17,20 @@ const menuAside: MenuAsideItem[] = [
     permissions: 'READ_POSTS',
   },
   {
-    href: '/subscriptions/subscriptions-list',
-    label: 'Subscriptions',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    icon: icon.mdiCreditCard ? icon.mdiCreditCard : icon.mdiTable,
-    permissions: 'READ_SUBSCRIPTIONS',
-  },
-  {
     href: '/topics/topics-list',
     label: 'Topics',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     icon: icon.mdiLightbulbOutline ? icon.mdiLightbulbOutline : icon.mdiTable,
     permissions: 'READ_TOPICS',
+  },
+  {
+    href: '/subscriptions/subscriptions-list',
+    label: 'Subscriptions',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiCreditCard ? icon.mdiCreditCard : icon.mdiTable,
+    permissions: 'READ_SUBSCRIPTIONS',
   },
   {
     href: '/roles/roles-list',
