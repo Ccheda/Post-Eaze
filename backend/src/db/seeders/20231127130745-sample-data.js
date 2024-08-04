@@ -25,12 +25,6 @@ const PostsData = [
 
     // type code here for "relation_one" field
   },
-
-  {
-    content: 'Just completed my trial period and loving this tool!',
-
-    // type code here for "relation_one" field
-  },
 ];
 
 const SubscriptionsData = [
@@ -63,16 +57,6 @@ const SubscriptionsData = [
 
     // type code here for "relation_one" field
   },
-
-  {
-    plan: 'Monthly',
-
-    start_date: new Date('2023-10-01T00:00:00Z'),
-
-    end_date: new Date('2023-11-01T00:00:00Z'),
-
-    // type code here for "relation_one" field
-  },
 ];
 
 const TopicsData = [
@@ -94,14 +78,6 @@ const TopicsData = [
 
   {
     title: 'Project Updates',
-
-    // type code here for "relation_many" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    title: 'Feedback Requests',
 
     // type code here for "relation_many" field
 
@@ -142,17 +118,6 @@ async function associatePostWithUser() {
   if (Post2?.setUser) {
     await Post2.setUser(relatedUser2);
   }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Post3 = await Posts.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Post3?.setUser) {
-    await Post3.setUser(relatedUser3);
-  }
 }
 
 async function associateSubscriptionWithUser() {
@@ -187,17 +152,6 @@ async function associateSubscriptionWithUser() {
   });
   if (Subscription2?.setUser) {
     await Subscription2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Subscription3 = await Subscriptions.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Subscription3?.setUser) {
-    await Subscription3.setUser(relatedUser3);
   }
 }
 
@@ -236,17 +190,6 @@ async function associateTopicWithUser() {
   if (Topic2?.setUser) {
     await Topic2.setUser(relatedUser2);
   }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Topic3 = await Topics.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Topic3?.setUser) {
-    await Topic3.setUser(relatedUser3);
-  }
 }
 
 async function associateUserWithUser() {
@@ -281,17 +224,6 @@ async function associateUserWithUser() {
   });
   if (User2?.setUser) {
     await User2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const User3 = await Users.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (User3?.setUser) {
-    await User3.setUser(relatedUser3);
   }
 }
 
